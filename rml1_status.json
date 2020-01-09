@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/pi/.romill/single_rml_1.py", line 3, in <module>
+    getdata(1)
+  File "/home/pi/.romill/romill.py", line 77, in getdata
+    mount = mount_rml(device_number)
+  File "/home/pi/.romill/romill.py", line 113, in mount_rml
+    device_path = cfg["devices"][rml_id]['dir']
+KeyError: 1
+
