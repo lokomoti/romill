@@ -1,0 +1,31 @@
+Tue Aug 06, 2019 3:26 am
+
+OK now you know that uart2 is not available. You should remove uart2 from the config.
+
+
+Try uart5! add this line into /boot/config.txt
+Code: Select all
+
+enable_uart=1
+dtoverlay=uart5
+The TX will be GPIO12 and RX GPIO13
+
+B.T.W. uart3 use the same pin than i2c and uart4 the SPI.
+
+The simple method to check if it works will be to install a serial terminal like minicom.
+
+sudo apt update
+sudo apt install minicom
+
+Try to connect GPIO12(pin32) and GPIO13(pin 33) together.
+Then if you run minicom it should echo what you type. if you break the connection between GPIO12 and GPIO13 it shouldn't work.
+Code: Select all
+
+minicom -D /dev/ttyAMA1 -b 9600
+If it works then try to connect serial0 with uart5(ttyAMA1). TXD0 to RXD5 and RXD0 to TXD5. Use two terminals with specific minicom on them
+
+The FIrst terminal with the previous minicom command and the second with
+Code: Select all
+
+minicom -D /dev/serial0 -b9 600
+I assume that you disabled the serial login on serial0.
