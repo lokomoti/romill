@@ -1,0 +1,14 @@
+# Based on https://www.domoticz.com/wiki/Setting_up_the_raspberry_pi_watchdog
+
+sudo modprobe bcm2835_wdt
+echo "bcm2835_wdt" | sudo tee -a /etc/modules
+
+sudo apt-get install watchdog
+sudo update-rc.d watchdog defaults
+
+# open following
+sudo nano /etc/watchdog.conf
+
+# on the beggining of the file insert folowing row
+watchdog-timeout = 15
+
